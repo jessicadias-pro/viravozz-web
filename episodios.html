@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Episódios | ViraVozz Podcast</title>
+    <meta name="description"
+        content="Ouça todos os episódios do ViraVozz - reflexões sobre autoconhecimento, crescimento pessoal e histórias inspiradoras.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="viravozz-icon.jpg" type="image/jpeg">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container container">
+            <a href="index.html" class="nav-logo">
+                <img src="viravozz-icon.jpg" alt="ViraVozz" class="logo-img">
+                <span class="logo-text">ViraVozz</span>
+            </a>
+            <button class="nav-toggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Início</a></li>
+                <li><a href="episodios.html" class="nav-link active">Episódios</a></li>
+                <li><a href="blog.html" class="nav-link">Blog</a></li>
+                <li><a href="recomendacoes.html" class="nav-link">Recomendações</a></li>
+                <li><a href="contato.html" class="nav-link">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="section-header container"
+        style="padding-top: 120px; margin-bottom: var(--space-3xl); display: block; text-align: center;">
+        <h1 class="section-title">Todos os <span class="gradient-text">Episódios</span></h1>
+        <p style="color: rgba(255,255,255,0.6); margin-top: var(--space-md);">
+            Mais de 44 episódios sobre autoconhecimento, reflexões e histórias que transformam.
+            Novos episódios toda terça-feira às 11h.
+        </p>
+    </header>
+
+    <!-- Episodes List -->
+    <section class="episodes-page">
+        <div class="container">
+            <div class="episodes-grid" id="episodes-grid">
+                <div class="episode-loading">
+                    <div class="spinner"></div>
+                    <p>Carregando episódios...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plataformas -->
+    <section class="platforms" style="margin-top: var(--space-3xl);">
+        <div class="container">
+            <h2 class="section-title" style="margin-bottom: var(--space-2xl); text-align: center;">Ouça onde preferir
+            </h2>
+            <div class="platforms-grid">
+                <a href="https://open.spotify.com/show/0PvQi0Wt8SzF1KXtv2OAeN" target="_blank"
+                    class="platform-card spotify">
+                    <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+                        <path
+                            d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
+                    </svg>
+                    <span>Spotify</span>
+                </a>
+                <a href="https://podcasts.apple.com/us/podcast/viravozz/id1806948480" target="_blank"
+                    class="platform-card apple">
+                    <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+                        <path
+                            d="M11.996 23.514C5.647 23.514.5 18.366.5 12.016.5 5.667 5.648.52 11.998.52c6.35 0 11.502 5.147 11.502 11.496s-5.152 11.498-11.504 11.498zm0-20.526c-4.98 0-9.028 4.048-9.028 9.028 0 4.982 4.048 9.03 9.028 9.03s9.032-4.048 9.032-9.03c0-4.98-4.052-9.028-9.032-9.028z" />
+                    </svg>
+                    <span>Apple Podcasts</span>
+                </a>
+                <a href="https://youtube.com/@viravozz" target="_blank" class="platform-card youtube">
+                    <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+                        <path
+                            d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                    </svg>
+                    <span>YouTube</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand" style="flex: 1;">
+                    <img src="viravozz-icon.jpg" alt="ViraVozz" class="footer-logo">
+                    <p class="footer-tagline">O podcast que transforma vozes em histórias.</p>
+                    <div class="footer-social" style="margin-top: 1.5rem;">
+                        <h4 style="margin-bottom: 0.5rem;">Redes Sociais</h4>
+                        <div class="social-links" style="display: flex; gap: 1rem;">
+                            <a href="https://www.tiktok.com/@viravozz" target="_blank">TikTok</a>
+                            <a href="https://youtube.com/@viravozz" target="_blank">YouTube</a>
+                            <a href="https://open.spotify.com/show/0PvQi0Wt8SzF1KXtv2OAeN" target="_blank">Spotify</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-right" style="flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                    <div class="footer-links">
+                        <h4>Navegação</h4>
+                        <ul>
+                            <li><a href="index.html">Início</a></li>
+                            <li><a href="episodios.html">Episódios</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="recomendacoes.html">Recomendações</a></li>
+                            <li><a href="contato.html">Contato</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-feedback">
+                        <h4>Contato</h4>
+                        <p style="color: rgba(255,255,255,0.6); font-size: 0.875rem;">
+                            Gostou do conteúdo? Me deixe saber, deixe um comentário na aba contatos ou entao me chama no
+                            direct do instagram <a href="https://instagram.com/jessicadias.pro" target="_blank"
+                                style="color: var(--viravozz-gold);">jessicadias.pro</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 ViraVozz. Todos os direitos reservados.</p>
+                <p class="footer-episode-info">Novos episódios toda terça-feira às 11h</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Universal Reproduction Bar -->
+    <div id="repro-bar" class="mini-player-bar">
+        <div id="repro-info" style="flex: 1; min-width: 0;">
+            <p id="repro-title"
+                style="font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 0.875rem;">
+                Nenhum áudio tocando</p>
+        </div>
+        <div style="flex: 2; display: flex; align-items: center; gap: var(--space-md);">
+            <audio id="global-player" src=""></audio>
+            <div id="global-progress" class="mini-progress" style="height: 6px;">
+                <div id="global-progress-bar" class="mini-progress-bar"></div>
+            </div>
+        </div>
+        <div id="repro-controls" style="display: flex; gap: var(--space-md); align-items: center;">
+            <button id="global-play-btn" class="mini-btn" style="font-size: 1.5rem;">▶</button>
+            <button id="global-close" class="mini-btn">✕</button>
+        </div>
+    </div>
+
+    <!-- Floating Action Button -->
+    <div class="fab-container">
+        <a href="contato.html" class="fab" title="Entre em contato">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                <line x1="12" y1="19" x2="12" y2="23"></line>
+                <line x1="8" y1="23" x2="16" y2="23"></line>
+            </svg>
+        </a>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>
