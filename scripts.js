@@ -28,21 +28,44 @@ const globalProgressContainer = document.getElementById('global-progress');
 // Initialization
 // ============================================
 async function init() {
+    // 1. Try to load from cache first for instant display
+    const cachedData = localStorage.getItem('viravozz_cache');
+    if (cachedData) {
+        try {
+            podcastData = JSON.parse(cachedData);
+            displayData(podcastData);
+            console.log("Loaded from cache");
+        } catch (e) {
+            console.error("Cache error", e);
+        }
+    }
+
+    // 2. Fetch fresh data from RSS
     const data = await fetchRSSFeed();
     if (!data) return;
 
-    podcastData = data;
-    const isEpisodesPage = window.location.pathname.includes('episodios');
-
-    if (isEpisodesPage) {
-        renderAllEpisodes(podcastData.episodes, podcastData.image);
-    } else {
-        renderFeaturedEpisode(podcastData.episodes[0], podcastData.image);
-        renderEpisodesSlider(podcastData.episodes, podcastData.image);
-        setupHeroButton();
+    // 3. If data changed or no cache, update display and save cache
+    const dataString = JSON.stringify(data);
+    if (dataString !== cachedData) {
+        podcastData = data;
+        displayData(podcastData);
+        localStorage.setItem('viravozz_cache', dataString);
+        console.log("Cache updated with fresh data");
     }
 
     setupGlobalPlayer();
+}
+
+function displayData(data) {
+    const isEpisodesPage = window.location.pathname.includes('episodios');
+
+    if (isEpisodesPage) {
+        renderAllEpisodes(data.episodes, data.image);
+    } else {
+        renderFeaturedEpisode(data.episodes[0], data.image);
+        renderEpisodesSlider(data.episodes, data.image);
+        setupHeroButton();
+    }
 }
 
 // ============================================

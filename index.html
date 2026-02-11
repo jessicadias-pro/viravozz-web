@@ -87,10 +87,7 @@
             <h2 class="section-title" style="margin-bottom: var(--space-2xl); text-align: center;">Último <span
                     class="gradient-text">Episódio</span></h2>
             <div id="featured-episode" class="episode-featured">
-                <div class="episode-loading">
-                    <div class="spinner"></div>
-                    <p>Carregando último episódio...</p>
-                </div>
+                <div class="skeleton skeleton-featured"></div>
             </div>
         </div>
     </section>
@@ -103,7 +100,9 @@
             </div>
 
             <div class="episodes-grid" id="episodes-slider">
-                <!-- Loaded via JS - reusing ID for compatibility with existing script variable -->
+                <div class="skeleton skeleton-card"></div>
+                <div class="skeleton skeleton-card"></div>
+                <div class="skeleton skeleton-card"></div>
             </div>
 
             <div style="text-align: center; margin-top: var(--space-xl);">
