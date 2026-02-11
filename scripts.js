@@ -175,59 +175,68 @@ function createEpisodeCard(episode) {
 // Player Logic
 // ============================================
 window.playEpisode = function (url, title) {
-    if (!globalPlayer || !reproBar) return;
+    const player = document.getElementById('global-player');
+    const bar = document.getElementById('repro-bar');
+    const titleEl = document.getElementById('repro-title');
+
+    if (!player || !bar) {
+        console.error("Player elements not found");
+        return;
+    }
 
     const playAudio = () => {
-        globalPlayer.play().then(() => {
-            console.log("Playback started");
-        }).catch(error => {
-            console.error("Playback failed:", error);
-            // Fallback: show play icon if blocked
+        player.play().catch(error => {
+            console.error("Playback failed. User interaction might be required.", error);
             updatePlayIcons();
         });
     };
 
     if (currentPlayingUrl === url) {
-        if (globalPlayer.paused) playAudio();
-        else globalPlayer.pause();
+        if (player.paused) playAudio();
+        else player.pause();
     } else {
         currentPlayingUrl = url;
-        globalPlayer.src = url;
-        reproTitle.textContent = title;
-        reproBar.classList.add('active');
+        player.src = url;
+        if (titleEl) titleEl.textContent = title;
+        bar.classList.add('active');
         playAudio();
     }
     updatePlayIcons();
 };
 
 function setupGlobalPlayer() {
-    if (!globalPlayer) return;
+    const player = document.getElementById('global-player');
+    if (!player) return;
 
-    globalPlayBtn?.addEventListener('click', () => {
-        if (globalPlayer.paused) {
-            globalPlayer.play().catch(e => console.error(e));
+    const playBtn = document.getElementById('global-play-btn');
+    playBtn?.addEventListener('click', () => {
+        if (player.paused) {
+            player.play().catch(e => console.error(e));
         } else {
-            globalPlayer.pause();
+            player.pause();
         }
     });
 
-    globalPlayer.addEventListener('play', updatePlayIcons);
-    globalPlayer.addEventListener('pause', updatePlayIcons);
+    player.addEventListener('play', updatePlayIcons);
+    player.addEventListener('pause', updatePlayIcons);
 
-    globalPlayer.addEventListener('timeupdate', () => {
-        const progress = (globalPlayer.currentTime / globalPlayer.duration) * 100;
-        if (globalProgressBar) globalProgressBar.style.width = `${progress}%`;
+    player.addEventListener('timeupdate', () => {
+        const bar = document.getElementById('global-progress-bar');
+        const progress = (player.currentTime / player.duration) * 100;
+        if (bar) bar.style.width = `${progress}%`;
     });
 
-    globalProgressContainer?.addEventListener('click', (e) => {
-        const rect = globalProgressContainer.getBoundingClientRect();
+    const progressContainer = document.getElementById('global-progress');
+    progressContainer?.addEventListener('click', (e) => {
+        const rect = progressContainer.getBoundingClientRect();
         const pos = (e.clientX - rect.left) / rect.width;
-        globalPlayer.currentTime = pos * globalPlayer.duration;
+        player.currentTime = pos * player.duration;
     });
 
     document.getElementById('global-close')?.addEventListener('click', () => {
-        reproBar.classList.remove('active');
-        globalPlayer.pause();
+        const bar = document.getElementById('repro-bar');
+        if (bar) bar.classList.remove('active');
+        player.pause();
     });
 }
 

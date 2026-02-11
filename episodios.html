@@ -13,6 +13,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="viravozz-icon.jpg" type="image/jpeg">
+    <script>
+        let currentPlayingUrl = "";
+        function playEpisode(url, title) {
+            const player = document.getElementById('global-player');
+            const bar = document.getElementById('repro-bar');
+            const titleEl = document.getElementById('repro-title');
+            if (!player || !bar) return;
+            if (currentPlayingUrl === url) {
+                player.paused ? player.play() : player.pause();
+            } else {
+                currentPlayingUrl = url;
+                player.src = url;
+                if (titleEl) titleEl.textContent = title;
+                bar.classList.add('active');
+                player.play().catch(e => console.log("Play blocked, waiting for interaction"));
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -53,8 +71,18 @@
                 <!-- Hardcoded for instant speed, JS will refresh if needed -->
                 <article class="episode-card">
                     <div class="episode-card-image-container">
-                        <img src="https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/31201211/31201211-1738072041285-d857d478e1194.jpg"
-                            alt="mais espaço, mais clareza" class="episode-card-image">
+                        <img src="viravozz-logo.jpg" alt="da escola para casa" class="episode-card-image">
+                        <button class="card-play-btn"
+                            onclick="playEpisode('https://anchor.fm/s/1004dc564/podcast/play/114610507/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2026-0-27%2F416908899-44100-2-7c85b5488a2d5.mp3', 'da escola para casa')">▶</button>
+                    </div>
+                    <div class="episode-card-content">
+                        <h3 class="episode-card-title">da escola para casa</h3>
+                        <div class="episode-card-meta">27 de jan • 14:30</div>
+                    </div>
+                </article>
+                <article class="episode-card">
+                    <div class="episode-card-image-container">
+                        <img src="viravozz-logo.jpg" alt="mais espaço, mais clareza" class="episode-card-image">
                         <button class="card-play-btn"
                             onclick="playEpisode('https://anchor.fm/s/1004dc564/podcast/play/97825316/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-0-28%2F3b235ee6-91e8-782e-6d45-66ec941328eb.mp3', 'mais espaço, mais clareza')">▶</button>
                     </div>
@@ -65,42 +93,26 @@
                 </article>
                 <article class="episode-card">
                     <div class="episode-card-image-container">
-                        <img src="https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/31201211/31201211-1737466540306-039c36ade97d6.jpg"
-                            alt="o encontro com a montanha" class="episode-card-image">
+                        <img src="viravozz-logo.jpg" alt="a lista que ninguém quer fazer" class="episode-card-image">
                         <button class="card-play-btn"
-                            onclick="playEpisode('https://anchor.fm/s/1004dc564/podcast/play/97519658/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-0-21%2F2f638890-3ae8-3f5f-3ee0-f1c5c707f43b.mp3', 'o encontro com a montanha')">▶</button>
+                            onclick="playEpisode('https://anchor.fm/s/1004dc564/podcast/play/112648899/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-0-27%2F416908899-44100-2-7c85b5488a2d5.mp3', 'a lista que ninguém quer fazer')">▶</button>
                     </div>
                     <div class="episode-card-content">
-                        <h3 class="episode-card-title">o encontro com a montanha</h3>
-                        <div class="episode-card-meta">21 de jan • 11:45</div>
+                        <h3 class="episode-card-title">a lista que ninguém quer fazer</h3>
+                        <div class="episode-card-meta">21 de jan • 15:20</div>
                     </div>
                 </article>
                 <article class="episode-card">
                     <div class="episode-card-image-container">
-                        <img src="https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/31201211/31201211-1736861614002-311e92d83e185.jpg"
-                            alt="escutar é um ato de amor" class="episode-card-image">
+                        <img src="viravozz-logo.jpg" alt="se soubesse, ainda compraria?" class="episode-card-image">
                         <button class="card-play-btn"
-                            onclick="playEpisode('https://anchor.fm/s/1004dc564/podcast/play/97194639/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-0-14%2F3eb8def9-e0d0-79df-2f3b-5348007a513c.mp3', 'escutar é um ato de amor')">▶</button>
+                            onclick="playEpisode('https://anchor.fm/s/1004dc564/podcast/play/114610510/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-0-14%2F3eb8def9-e0d0-79df-2f3b-5348007a513c.mp3', 'se soubesse, ainda compraria?')">▶</button>
                     </div>
                     <div class="episode-card-content">
-                        <h3 class="episode-card-title">escutar é um ato de amor</h3>
-                        <div class="episode-card-meta">14 de jan • 14:10</div>
+                        <h3 class="episode-card-title">se soubesse, ainda compraria?</h3>
+                        <div class="episode-card-meta">14 de jan • 12:45</div>
                     </div>
                 </article>
-                <article class="episode-card">
-                    <div class="episode-card-image-container">
-                        <img src="https://d3t3ozftmdmh3i.cloudfront.net/staging/podcast_uploaded_nologo/31201211/31201211-1736257500589-982845347be1b.jpg"
-                            alt="brevidade inteligente" class="episode-card-image">
-                        <button class="card-play-btn"
-                            onclick="playEpisode('https://anchor.fm/s/1004dc564/podcast/play/96881721/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2025-0-7%2F717f919d-7043-39f2-cedf-1786f1e83f51.mp3', 'brevidade inteligente')">▶</button>
-                    </div>
-                    <div class="episode-card-content">
-                        <h3 class="episode-card-title">brevidade inteligente</h3>
-                        <div class="episode-card-meta">7 de jan • 12:55</div>
-                    </div>
-                </article>
-                <div class="skeleton skeleton-card"></div>
-                <div class="skeleton skeleton-card"></div>
             </div>
         </div>
     </section>
